@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "flyirons_drug_mod",
+  "version": "${version}",
+  "name": "Flyirons Drug Mod",
+  "description": "Closed-box SMP drug economy overhaul for Fabric.",
+  "authors": ["Flyirons"],
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.flyirons.drugmod.DrugMod"],
+    "client": ["com.flyirons.drugmod.client.DrugModClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "fabric-api": "*",
+    "minecraft": "1.21.4"
+  }
+}
