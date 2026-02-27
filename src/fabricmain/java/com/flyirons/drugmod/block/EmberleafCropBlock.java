@@ -8,6 +8,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
 public class EmberleafCropBlock extends CropBlock {
+    public EmberleafCropBlock(Settings settings) {
+        super(settings);
+    }
+
     @Override
     protected ItemConvertible getSeedsItem() {
         return ModItems.EMBERLEAF_SEEDS;

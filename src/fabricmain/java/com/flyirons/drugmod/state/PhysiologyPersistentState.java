@@ -3,6 +3,7 @@ package com.flyirons.drugmod.state;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.PersistentState;
@@ -13,6 +14,12 @@ import java.util.Map;
 import java.util.UUID;
 
 public class PhysiologyPersistentState extends PersistentState {
+    private static final Type<PhysiologyPersistentState> TYPE = new Type<>(
+            PhysiologyPersistentState::new,
+            PhysiologyPersistentState::fromNbt,
+            null
+    );
+
     private final Map<UUID, PlayerPhysiology> players = new HashMap<>();
 
     public PlayerPhysiology forPlayer(ServerPlayerEntity player) {
@@ -25,7 +32,7 @@ public class PhysiologyPersistentState extends PersistentState {
     }
 
     @Override
-    public NbtCompound writeNbt(NbtCompound nbt) {
+    public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
         NbtList playersList = new NbtList();
         for (Map.Entry<UUID, PlayerPhysiology> entry : players.entrySet()) {
             NbtCompound p = new NbtCompound();
@@ -49,7 +56,7 @@ public class PhysiologyPersistentState extends PersistentState {
         return nbt;
     }
 
-    public static PhysiologyPersistentState fromNbt(NbtCompound nbt) {
+    public static PhysiologyPersistentState fromNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
         PhysiologyPersistentState state = new PhysiologyPersistentState();
         NbtList playersList = nbt.getList("players", NbtElement.COMPOUND_TYPE);
         for (NbtElement e : playersList) {
@@ -74,6 +81,6 @@ public class PhysiologyPersistentState extends PersistentState {
 
     public static PhysiologyPersistentState get(MinecraftServer server) {
         PersistentStateManager manager = server.getOverworld().getPersistentStateManager();
-        return manager.getOrCreate(PhysiologyPersistentState::fromNbt, PhysiologyPersistentState::new, "flyirons_drug_physiology");
+        return manager.getOrCreate(TYPE, "flyirons_drug_physiology");
     }
 }
