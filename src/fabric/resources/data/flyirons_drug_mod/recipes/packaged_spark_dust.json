@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "flyirons_drug_mod:spark_dust" },
+    { "item": "minecraft:paper" }
+  ],
+  "result": {
+    "item": "flyirons_drug_mod:packaged_spark_dust",
+    "count": 1
+  }
+}
