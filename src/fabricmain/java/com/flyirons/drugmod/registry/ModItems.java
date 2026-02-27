@@ -4,7 +4,7 @@ import com.flyirons.drugmod.DrugConsumableItem;
 import com.flyirons.drugmod.DrugMod;
 import com.flyirons.drugmod.content.DrugDefinition;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.AliasedBlockItem;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 public final class ModItems {
     private ModItems() {}
 
-    public static final Item EMBERLEAF_SEEDS = register("emberleaf_seeds", new AliasedBlockItem(ModBlocks.EMBERLEAF_CROP, new Item.Settings()));
+    public static final Item EMBERLEAF_SEEDS = register("emberleaf_seeds", new BlockItem(ModBlocks.EMBERLEAF_CROP, new Item.Settings()));
     public static final Item EMBERLEAF_BUNDLE = register("emberleaf_bundle", new Item(new Item.Settings()));
     public static final Item EMPTY_CART_SHELL = register("empty_cart_shell", new Item(new Item.Settings()));
     public static final Item TAINTED_POWDER = register("tainted_powder", new Item(new Item.Settings()));
